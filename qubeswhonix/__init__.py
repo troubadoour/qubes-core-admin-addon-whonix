@@ -31,6 +31,8 @@ class QubesWhonixExtension(qubes.ext.Extension):
         default settings
         '''
         # pylint: disable=no-self-use
+        vm.tags.add('anon-gateway')
+
         template = getattr(vm, 'template', None)
         if template is None:
             return
@@ -67,7 +69,6 @@ class QubesWhonixExtension(qubes.ext.Extension):
                 vm.default_dispvm = None
 
             vm.tags.add('anon-vm')
-            vm.tags.add('anon-gateway')
 
     @qubes.ext.handler('features-request')
     def on_features_request(self, vm, _event, untrusted_features):
